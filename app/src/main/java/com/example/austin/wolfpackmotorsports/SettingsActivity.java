@@ -15,8 +15,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
 
 import java.util.Set;
 
@@ -66,10 +69,19 @@ public class SettingsActivity extends AppCompatActivity
             BTArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
             possibleBT = (ListView) findViewById(R.id.listView);
             possibleBT.setAdapter(BTArrayAdapter);
+            possibleBT.setOnItemClickListener(new OnItemClickListener()
+            {
+                public void onItemClick(AdapterView<?> listView, View itemView, int itemPosition, long itemId)
+                {
+                    //Do something crazy like connect to bluetooth
+                    //test whether it works by pop up notification
+                    Toast.makeText(getApplicationContext(),"Hey you are trying to connect via bluetooth", Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 
-    /* Called when the user clicks the refresh button */
+    /* Sets up list */
     public void list(View view)
     {
         // get paired devices
@@ -115,12 +127,9 @@ public class SettingsActivity extends AppCompatActivity
 
     }
     @Override
-    protected void onDestroy() {
-        // TODO Auto-generated method stub
+    protected void onDestroy()
+    {
         super.onDestroy();
         unregisterReceiver(bReceiver);
     }
-
-
-
 }
