@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    /* Called when the user clicks the nearest help button */
+    /* Called when the user clicks the settings button */
     public void changeSettings(View view)
     {
         Intent intent = new Intent(this,SettingsActivity.class);
